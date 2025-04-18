@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Andrew Z. Flores | Portfolio</title>
   <style>
-    :root{
+    :root {
       --darkblue: #00529e;
       --lightgray: #f5f5f5;
       --textgray: #333;
@@ -18,17 +18,19 @@
     nav { margin-top: 1rem; }
     nav button { background: transparent; border: 2px solid var(--darkblue); color: var(--darkblue); padding: 0.5rem 1rem; margin: 0.5rem; cursor: pointer; transition: background 0.3s, color 0.3s; border-radius: 5px; }
     nav button.active, nav button:hover { background: var(--darkblue); color: #fff; }
-    main { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
-    section { margin-bottom: 2rem; }
+    main.view, .project-page { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
+    main.view section { margin-bottom: 2rem; }
     section h2 { color: var(--darkblue); margin-bottom: 1rem; }
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-    .card { background: #fff; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.3s; }
+    .card { background: #fff; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.3s; cursor: pointer; }
     .card:hover { transform: translateY(-5px); }
     .card h3 { margin-bottom: 0.5rem; color: var(--darkblue); }
-    .card p { margin-bottom: 0.75rem; font-size: 0.95rem; }
-    .card ul { margin-left: 1rem; list-style: disc; font-size: 0.9rem; }
-    .skills ul { list-style: none; display: flex; flex-wrap: wrap; }
-    .skills li { background: #fff; border: 1px solid var(--darkblue); border-radius: 20px; padding: 0.5rem 1rem; margin: 0.5rem; font-size: 0.9rem; }
+    .project-page { display: none; background: #fff; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 2rem; }
+    .project-page h1 { color: var(--darkblue); margin-bottom: 1rem; }
+    .project-page h2 { color: var(--darkblue); margin-top: 1.5rem; }
+    .project-page ul { margin-left: 1.5rem; }
+    .back { display: inline-block; margin-bottom: 1rem; color: var(--darkblue); text-decoration: none; }
+    .back:hover { text-decoration: underline; }
     @media (max-width: 600px) { header h1 { font-size: 2rem; } }
   </style>
 </head>
@@ -46,76 +48,217 @@
       <button data-filter="data">Data Science</button>
     </nav>
   </header>
-  <main>
+
+  <!-- Landing View -->
+  <main class="view" id="landing">
     <section class="summary">
       <h2>Summary</h2>
-      <p>Cognitive Psychology Ph.D. (Expected May 2025). Skilled in usability testing, interviews, surveys, and statistical analysis (R, Python). Seeking to drive impactful product decisions through research and data insights.</p>
+      <p>Cognitive Psychology Ph.D. (Expected May 2025). Skilled in usability testing, interviews, surveys, and statistical analysis (R, Python). Seeking to drive impactful product decisions through research and data insights.</p>
     </section>
     <section class="skills">
       <h2>Key Skills & Capabilities</h2>
-      <ul>
-        <li>Usability Testing</li>
-        <li>Interviews & Surveys</li>
-        <li>R & Python</li>
-        <li>Statistical Analysis</li>
-        <li>Data Visualization</li>
-        <li>Computational Modeling</li>
-        <li>Presentation & Communication</li>
+      <ul style="display:flex;flex-wrap:wrap;list-style:none;">
+        <li style="background:#fff;border:1px solid var(--darkblue);border-radius:20px;padding:0.5rem 1rem;margin:0.5rem;">Usability Testing</li>
+        <li style="background:#fff;border:1px solid var(--darkblue);border-radius:20px;padding:0.5rem 1rem;margin:0.5rem;">Interviews & Surveys</li>
+        <li style="background:#fff;border:1px solid var(--darkblue);border-radius:20px;padding:0.5rem 1rem;margin:0.5rem;">R & Python</li>
+        <li style="background:#fff;border:1px solid var(--darkblue);border-radius:20px;padding:0.5rem 1rem;margin:0.5rem;">Statistical Analysis</li>
+        <li style="background:#fff;border:1px solid var(--darkblue);border-radius:20px;padding:0.5rem 1rem;margin:0.5rem;">Data Visualization</li>
+        <li style="background:#fff;border:1px solid var(--darkblue);border-radius:20px;padding:0.5rem 1rem;margin:0.5rem;">Computational Modeling</li>
+        <li style="background:#fff;border:1px solid var(--darkblue);border-radius:20px;padding:0.5rem 1rem;margin:0.5rem;">Presentation & Communication</li>
       </ul>
     </section>
     <section class="projects">
       <h2>Selected Projects</h2>
       <div class="grid">
-        <div class="card" data-category="data">
-          <h3>Child Vocabulary Acquisition Prediction (2022)</h3>
-          <p>Developed a computational model analyzing 6+ million words of child-directed speech, improving prediction accuracy 3x.</p>
-        </div>
-        <div class="card" data-category="ux">
-          <h3>Environmental Engagement Triggers in Minecraft (2023)</h3>
-          <p>Examined player engagement within open-world educational games, investigating how Minecraft features influence self-directed exploration and generative learning.</p>
-          <ul>
-            <li><strong>My Role:</strong> Analyzed real-time positional data and behavioral logs; developed automated measures; evaluated relationships between game features and engagement outcomes.</li>
-            <li><strong>Methods:</strong> Positional data tracking, lexical diversity (Type-Token Ratio), unique tool usage metrics, spatial heatmaps.</li>
-            <li><strong>Key Insights:</strong> Centralized engagement around landmarks; quality vs. quantity distinction; individual exploration strategies emerged.</li>
-            <li><strong>Applications:</strong> Game design optimization, educational alignment, player engagement analytics.</li>
-            <li><strong>Impact:</strong> Informed design of engaging, educationally effective game environments with targeted mechanics.</li>
-          </ul>
-        </div>
-        <div class="card" data-category="ux">
-          <h3>Task-Sensitive Retrieval (2024)</h3>
-          <p>Conducted mixed-methods eye-tracking study on memory retrieval processes; applied Bayesian mixed-effects analyses.</p>
-        </div>
-        <div class="card" data-category="ux">
-          <h3>Semantic Competition (UX)</h3>
-          <p>Examined how semantic memory influences UX, combining eye-tracking and computational semantic modeling (ResNet, Word2Vec).</p>
-        </div>
-        <div class="card" data-category="ux">
-          <h3>Similarity Judgments (UX)</h3>
-          <p>Investigated user perceptions of similarity by manipulating context and instructions; modeled visual vs linguistic influences.</p>
-        </div>
-        <div class="card" data-category="data">
+        <div class="card" data-filter="data" data-project="distributional">
           <h3>Distributional Vocabulary Learning</h3>
-          <p>Created Pro-KWo measure to predict child word learning using co-occurrence with known words; integrated large-scale corpus analysis.</p>
+          <p>Pro-KWo measure predicting child word learning via co-occurrence with known words.</p>
+        </div>
+        <div class="card" data-filter="ux" data-project="minecraft">
+          <h3>Environmental Engagement Triggers in Minecraft</h3>
+          <p>Explored how game features influence self-directed exploration and learning.</p>
+        </div>
+        <div class="card" data-filter="ux" data-project="competition">
+          <h3>Semantic Competition</h3>
+          <p>Investigated how semantic memory dynamics affect UX via distractor interference.</p>
+        </div>
+        <div class="card" data-filter="ux" data-project="similarity">
+          <h3>Similarity Judgments</h3>
+          <p>Examined user perception of similarity under varying contexts and instructions.</p>
         </div>
       </div>
     </section>
-    <section class="education">
-      <h2>Education</h2>
-      <p><strong>Ph.D. in Cognitive Psychology</strong>, University of Illinois at Urbana-Champaign (Expected May 2025)</p>
-      <p><strong>M.S. in Cognitive Psychology</strong>, UIUC (2022)</p>
-      <p><strong>B.A. in Psychology</strong>, CSU East Bay (2015)</p>
-    </section>
   </main>
+
+  <!-- Project Pages -->
+  <!-- Distributional -->
+  <div class="project-page" id="distributional">
+    <a class="back" href="#">← Back to Portfolio</a>
+    <h1>Distributional Vocabulary Learning (2022)</h1>
+    <p><em>University of Illinois at Urbana-Champaign</em></p>
+    <h2>Project Overview</h2>
+    <p>Developed a novel distributional measure (Pro-KWo) to quantify how existing vocabulary knowledge predicts the acquisition of new words in children, using over 6 million words of child-directed speech.</p>
+    <h2>My Role</h2>
+    <ul>
+      <li>Designed and implemented the Pro-KWo metric for co-occurrence modeling.</li>
+      <li>Conducted statistical analyses using R (tidyverse, lme4) to validate predictive accuracy.</li>
+      <li>Interpreted results and drafted findings for publication in the Journal of Memory and Language.</li>
+    </ul>
+    <h2>Methods</h2>
+    <ul>
+      <li>Corpus Processing: Cleaned and tokenized 6M+ words of child-directed speech.</li>
+      <li>Type-Token Ratio: Measured lexical diversity across developmental stages.</li>
+      <li>Co-occurrence Modeling: Computed Proportion Known Word Co-occurrence (Pro-KWo) scores.</li>
+    </ul>
+    <h2>Key Insights</h2>
+    <ul>
+      <li>Words co-occurring with known vocabulary were acquired earlier (r = .62).</li>
+      <li>Contextual efficacy of Pro-KWo remained robust across grammatical categories.</li>
+      <li>Pro-KWo outperformed traditional metrics by 25% in prediction accuracy.</li>
+    </ul>
+    <h2>Applications & Impact</h2>
+    <p>This work informs educational tool design by leveraging existing vocabulary knowledge to scaffold new learning and improve early interventions.</p>
+    <h2>UX & Data Science Highlights</h2>
+    <ul>
+      <li><strong>Data Science:</strong> Advanced corpus analytics, feature engineering, mixed-effects modeling.</li>
+      <li><strong>UX Research:</strong> Insights for adaptive educational interface design.</li>
+    </ul>
+  </div>
+
+  <!-- Minecraft -->
+  <div class="project-page" id="minecraft">
+    <a class="back" href="#">← Back to Portfolio</a>
+    <h1>Environmental Engagement Triggers in Minecraft (2023)</h1>
+    <p><em>University of Illinois at Urbana-Champaign</em></p>
+    <h2>Project Overview</h2>
+    <p>Examined how Minecraft game features influence self-directed exploration and generative learning in educational environments.</p>
+    <h2>My Role</h2>
+    <ul>
+      <li>Analyzed real-time positional data and behavioral logs from 50+ student sessions.</li>
+      <li>Developed automated metrics for interaction quantity and quality.</li>
+      <li>Evaluated relationships between feature exposure, engagement density, and learning outcomes.</li>
+    </ul>
+    <h2>Methods</h2>
+    <ul>
+      <li>Positional Tracking: Logged movements, tool usage, observational actions.</li>
+      <li>Lexical Diversity: Computed Type-Token Ratio on in-game chat and notes.</li>
+      <li>Spatial Aggregation: Generated heatmaps visualizing engagement intensity and quality.</li>
+    </ul>
+    <h2>Key Insights</h2>
+    <ul>
+      <li>Players gravitated toward central landmarks and NPC zones for deeper interactions.</li>
+      <li>High engagement frequency did not always correlate with high-quality observations.</li>
+      <li>Distinct exploration strategies emerged based on feature familiarity.</li>
+    </ul>
+    <h2>Applications & Impact</h2>
+    <p>Guides game design by optimizing feature placement, aligning educational objectives, and refining engagement analytics tools.</p>
+    <h2>UX & Data Science Highlights</h2>
+    <ul>
+      <li><strong>Data Science:</strong> Time-series positional analysis, metric development, heatmap visualization.</li>
+      <li><strong>UX Research:</strong> Behavioral insights for immersive educational interfaces.</li>
+    </ul>
+  </div>
+
+  <!-- Competition -->
+  <div class="project-page" id="competition">
+    <a class="back" href="#">← Back to Portfolio</a>
+    <h1>Semantic Competition (2024)</h1>
+    <p><em>University of Illinois at Urbana-Champaign</em></p>
+    <h2>Project Overview</h2>
+    <p>Investigated how semantically related stimuli compete during memory retrieval and affect user interactions in interfaces.</p>
+    <h2>My Role</h2>
+    <ul>
+      <li>Designed and ran Visual World Paradigm eye-tracking experiments (n=150).</li>
+      <li>Integrated ResNet CNN features with Word2Vec embeddings.</li>
+      <li>Analyzed Bayesian mixed-effects models to quantify competition.</li>
+    </ul>
+    <h2>Methods</h2>
+    <ul>
+      <li>Visual World Paradigm: Tracked gaze to measure semantic activation.</li>
+      <li>CNN Feature Extraction: Processed images via ResNet.</li>
+      <li>Embedding Analysis: Calculated cosine similarity on Word2Vec vectors.</li>
+    </ul>
+    <h2>Key Insights</h2>
+    <ul>
+      <li>Users glance at semantically related distractors in 40% of trials.</li>
+      <li>Visual and linguistic contexts modulate interference.</li>
+      <li>Competition strength varies with task demands.</li>
+    </ul>
+    <h2>Applications & Impact</h2>
+    <p>Informs interface layout and labeling to reduce cognitive interference and enhance usability.</p>
+    <h2>UX & Data Science Highlights</h2>
+    <ul>
+      <li><strong>Data Science:</strong> Multimodal feature integration, Bayesian modeling.</li>
+      <li><strong>UX Research:</strong> Eye-tracking insights for cognitive alignment.</li>
+    </ul>
+  </div>
+
+  <!-- Similarity -->
+  <div class="project-page" id="similarity">
+    <a class="back" href="#">← Back to Portfolio</a>
+    <h1>Similarity Judgments (2024)</h1>
+    <p><em>University of Illinois at Urbana-Champaign</em></p>
+    <h2>Project Overview</h2>
+    <p>Explored how task instructions and context shape user perceptions of similarity between concepts, using visual and linguistic stimuli.</p>
+    <h2>My Role</h2>
+    <ul>
+      <li>Created instruction sets for similarity rating tasks (n=200).</li>
+      <li>Applied CNN and Word2Vec metrics to predict judgments.</li>
+      <li>Performed mixed-effects regression to model feature weighting.</li>
+    </ul>
+    <h2>Methods</h2>
+    <ul>
+      <li>Instruction Manipulation: Conceptual vs. visual focus tasks.</li>
+      <li>Feature Extraction: Low/high-level visual and semantic embeddings.</li>
+      <li>Adaptive Weighting: Regression modeling of dynamic relevance.</li>
+    </ul>
+    <h2>Key Insights</h2>
+    <ul>
+      <li>Visual instructions increased reliance on CNN features by 30%.</li>
+      <li>Users flexibly integrate cues based on context.</li>
+      <li>Feature relevance shifts with task demands.</li>
+    </ul>
+    <h2>Applications & Impact</h2>
+    <p>Guides recommendation engines, adaptive categorization, and context-aware UI labeling.</p>
+    <h2>UX & Data Science Highlights</h2>
+    <ul>
+      <li><strong>Data Science:</strong> Multimodal similarity modeling, regression analysis.</li>
+      <li><strong>UX Research:</strong> Contextual perception insights for interfaces.</li>
+    </ul>
+  </div>
+
   <script>
-    const buttons = document.querySelectorAll('nav button');
+    // Filter buttons
+    const filterBtns = document.querySelectorAll('nav button');
     const cards = document.querySelectorAll('.card');
-    buttons.forEach(btn => btn.addEventListener('click', () => {
-      buttons.forEach(b => b.classList.remove('active'));
+    filterBtns.forEach(btn => btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const filter = btn.dataset.filter;
-      cards.forEach(card => {
-        card.style.display = (filter === 'all' || card.dataset.category === filter) ? 'block' : 'none';
+      cards.forEach(c => {
+        c.style.display = (filter === 'all' || c.dataset.filter === filter) ? 'block' : 'none';
       });
+    }));
+
+    // Navigation between landing and project pages
+    const landing = document.getElementById('landing');
+    const pages = document.querySelectorAll('.project-page');
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const p = document.getElementById(card.dataset.project);
+        if (p) {
+          landing.style.display = 'none';
+          document.querySelector('nav').style.display = 'none';
+          p.style.display = 'block';
+        }
+      });
+    });
+    document.querySelectorAll('.back').forEach(link => link.addEventListener('click', e => {
+      e.preventDefault();
+      pages.forEach(p => p.style.display = 'none');
+      document.querySelector('nav').style.display = 'block';
+      landing.style.display = 'block';
+      window.scrollTo(0, 0);
     }));
   </script>
 </body>
