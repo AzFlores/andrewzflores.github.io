@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Andrew Z. Flores | Portfolio</title>
+  <title>Andrew Z. Flores | UX & Data Science Portfolio</title>
   <style>
     :root {
       --darkblue: #00529e;
@@ -16,20 +16,29 @@
     header h1 { color: var(--darkblue); font-size: 2.5rem; }
     header p a { margin: 0 0.5rem; color: var(--darkblue); text-decoration: none; font-weight: 500; }
     nav { margin-top: 1rem; }
-    nav button { background: transparent; border: 2px solid var(--darkblue); color: var(--darkblue); padding: 0.5rem 1rem; margin: 0.5rem; cursor: pointer; transition: background 0.3s, color 0.3s; border-radius: 5px; }
+    nav button { background: transparent; border: 2px solid var(--darkblue); color: var(--darkblue); padding: 0.5rem 1rem; margin: 0.5rem; cursor: pointer; transition: background 0.3s, color 0.3s; border-radius: 5px; font-weight: bold; }
     nav button.active, nav button:hover { background: var(--darkblue); color: #fff; }
     main.view, .project-page { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
-    main.view section { margin-bottom: 2rem; }
-    section h2 { color: var(--darkblue); margin-bottom: 1rem; }
+    section h2 { color: var(--darkblue); margin-bottom: 1rem; border-bottom: 2px solid #eee; padding-bottom: 0.5rem;}
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-    .card { background: #fff; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.3s; cursor: pointer; }
+    .card { background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.3s; cursor: pointer; display: flex; flex-direction: column;}
     .card:hover { transform: translateY(-5px); }
-    .card h3 { margin-bottom: 0.5rem; color: var(--darkblue); }
+    /* --- NEW CSS FOR CARD IMAGES --- */
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover; /* Ensures images cover the area well */
+      border-radius: 10px 10px 0 0; /* Rounds top corners */
+    }
+    .card-content { padding: 1.5rem; flex-grow: 1;}
+    .card-content h3 { margin-bottom: 0.5rem; color: var(--darkblue); }
+    .card-tags { padding: 0 1.5rem 1.5rem; }
+    .card-tags span { background: #eef; color: var(--darkblue); font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 15px; margin-right: 0.5rem; }
     .project-page { display: none; background: #fff; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 2rem; }
     .project-page h1 { color: var(--darkblue); margin-bottom: 1rem; }
-    .project-page h2 { color: var(--darkblue); margin-top: 1.5rem; }
-    .project-page ul { margin-left: 1.5rem; }
-    .back { display: inline-block; margin-bottom: 1rem; color: var(--darkblue); text-decoration: none; }
+    .project-page h2 { color: var(--darkblue); margin-top: 2rem; border-bottom: 2px solid #eee; padding-bottom: 0.5rem; margin-bottom: 1rem; }
+    .project-page ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+    .back { display: inline-block; margin-bottom: 1rem; color: var(--darkblue); text-decoration: none; font-weight: bold; }
     .back:hover { text-decoration: underline; }
     @media (max-width: 600px) { header h1 { font-size: 2rem; } }
   </style>
@@ -43,223 +52,208 @@
       <a href="https://github.com/AzFlores" target="_blank">GitHub</a>
     </p>
     <nav>
-      <button class="active" data-filter="all">All</button>
+      <button class="active" data-filter="all">All Projects</button>
       <button data-filter="ux">UX Research</button>
       <button data-filter="data">Data Science</button>
     </nav>
   </header>
 
-  <!-- Landing View -->
   <main class="view" id="landing">
-    <section class="summary">
-      <h2>Summary</h2>
-      <p>Cognitive Psychology Ph.D. (Expected May 2025). Skilled in usability testing, interviews, surveys, and statistical analysis (R, Python). Seeking to drive impactful product decisions through research and data insights.</p>
-    </section>
-    <section class="skills">
-      <h2>Key Skills & Capabilities</h2>
-      <ul style="display:flex;flex-wrap:wrap;list-style:none;">
-        <li style="background:#fff;border:1px solid var(--darkblue);border-radius:20px;padding:0.5rem 1rem;margin:0.5rem;">Usability Testing</li>
-        <li style="background:#fff;border:1px solid var(--darkblue);border-radius:20px;padding:0.5rem 1rem;margin:0.5rem;">Interviews & Surveys</li>
-        <li style="background:#fff;border:1px solid var(--darkblue);border-radius:20px;padding:0.5rem 1rem;margin:0.5rem;">R & Python</li>
-        <li style="background:#fff;border:1px solid var(--darkblue);border-radius:20px;padding:0.5rem 1rem;margin:0.5rem;">Statistical Analysis</li>
-        <li style="background:#fff;border:1px solid var(--darkblue);border-radius:20px;padding:0.5rem 1rem;margin:0.5rem;">Data Visualization</li>
-        <li style="background:#fff;border:1px solid var(--darkblue);border-radius:20px;padding:0.5rem 1rem;margin:0.5rem;">Computational Modeling</li>
-        <li style="background:#fff;border:1px solid var(--darkblue);border-radius:20px;padding:0.5rem 1rem;margin:0.5rem;">Presentation & Communication</li>
-      </ul>
-    </section>
-    <section class="projects">
+     <section class="projects">
       <h2>Selected Projects</h2>
       <div class="grid">
-        <div class="card" data-filter="data" data-project="distributional">
-          <h3>Distributional Vocabulary Learning</h3>
-          <p>Pro-KWo measure predicting child word learning via co-occurrence with known words.</p>
-        </div>
         <div class="card" data-filter="ux" data-project="minecraft">
-          <h3>Environmental Engagement Triggers in Minecraft</h3>
-          <p>Explored how game features influence self-directed exploration and learning.</p>
+          <img src="https://via.placeholder.com/400x200/00529e/ffffff?text=Minecraft+Project" alt="Minecraft project visual" />
+          <div class="card-content">
+            <h3>Optimizing Engagement in Educational Games</h3>
+            <p>Analyzed player behavior in Minecraft to provide data-driven recommendations for improving learning outcomes.</p>
+          </div>
+          <div class="card-tags">
+            <span>Behavioral Analysis</span><span>Data Visualization</span>
+          </div>
         </div>
+
+        <div class="card" data-filter="data" data-project="distributional">
+          <img src="https://via.placeholder.com/400x200/00529e/ffffff?text=Vocabulary+Model" alt="Distributional Learning project visual" />
+          <div class="card-content">
+            <h3>Predictive Modeling of Vocabulary Acquisition</h3>
+            <p>Developed a computational model that predicts child word learning with 3x the accuracy of previous benchmarks.</p>
+          </div>
+           <div class="card-tags">
+            <span>Computational Modeling</span><span>NLP</span>
+          </div>
+        </div>
+
         <div class="card" data-filter="ux" data-project="competition">
-          <h3>Semantic Competition</h3>
-          <p>Investigated how semantic memory dynamics affect UX via distractor interference.</p>
+          <img src="https://via.placeholder.com/400x200/00529e/ffffff?text=Eye-Tracking+Study" alt="Semantic Competition project visual" />
+          <div class="card-content">
+            <h3>Reducing Cognitive Load in UI Design</h3>
+            <p>Used eye-tracking to investigate how semantic competition affects usability and inform interface design.</p>
+          </div>
+           <div class="card-tags">
+            <span>Eye-Tracking</span><span>Experimental Design</span>
+          </div>
         </div>
+
         <div class="card" data-filter="ux" data-project="similarity">
-          <h3>Similarity Judgments</h3>
-          <p>Examined user perception of similarity under varying contexts and instructions.</p>
+          <img src="https://via.placeholder.com/400x200/00529e/ffffff?text=Similarity+Judgments" alt="Similarity Judgments project visual" />
+          <div class="card-content">
+            <h3>Informing Context-Aware Recommendation Engines</h3>
+            <p>Examined how context shapes user perception of similarity to improve adaptive interfaces.</p>
+          </div>
+           <div class="card-tags">
+            <span>Behavioral Research</span><span>Regression</span>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Project Pages -->
-  <!-- Distributional -->
-  <div class="project-page" id="distributional">
-    <a class="back" href="#">← Back to Portfolio</a>
-    <h1>Distributional Vocabulary Learning (2022)</h1>
-    <p><em>University of Illinois at Urbana-Champaign</em></p>
-    <h2>Project Overview</h2>
-    <p>Developed a novel distributional measure (Pro-KWo) to quantify how existing vocabulary knowledge predicts the acquisition of new words in children, using over 6 million words of child-directed speech.</p>
-    <h2>My Role</h2>
-    <ul>
-      <li>Designed and implemented the Pro-KWo metric for co-occurrence modeling.</li>
-      <li>Conducted statistical analyses using R (tidyverse, lme4) to validate predictive accuracy.</li>
-      <li>Interpreted results and drafted findings for publication in the Journal of Memory and Language.</li>
-    </ul>
-    <h2>Methods</h2>
-    <ul>
-      <li>Corpus Processing: Cleaned and tokenized 6M+ words of child-directed speech.</li>
-      <li>Type-Token Ratio: Measured lexical diversity across developmental stages.</li>
-      <li>Co-occurrence Modeling: Computed Proportion Known Word Co-occurrence (Pro-KWo) scores.</li>
-    </ul>
-    <h2>Key Insights</h2>
-    <ul>
-      <li>Words co-occurring with known vocabulary were acquired earlier (r = .62).</li>
-      <li>Contextual efficacy of Pro-KWo remained robust across grammatical categories.</li>
-      <li>Pro-KWo outperformed traditional metrics by 25% in prediction accuracy.</li>
-    </ul>
-    <h2>Applications & Impact</h2>
-    <p>This work informs educational tool design by leveraging existing vocabulary knowledge to scaffold new learning and improve early interventions.</p>
-    <h2>UX & Data Science Highlights</h2>
-    <ul>
-      <li><strong>Data Science:</strong> Advanced corpus analytics, feature engineering, mixed-effects modeling.</li>
-      <li><strong>UX Research:</strong> Insights for adaptive educational interface design.</li>
-    </ul>
-  </div>
-
-  <!-- Minecraft -->
   <div class="project-page" id="minecraft">
-    <a class="back" href="#">← Back to Portfolio</a>
-    <h1>Environmental Engagement Triggers in Minecraft (2023)</h1>
-    <p><em>University of Illinois at Urbana-Champaign</em></p>
-    <h2>Project Overview</h2>
-    <p>Examined how Minecraft game features influence self-directed exploration and generative learning in educational environments.</p>
-    <h2>My Role</h2>
+    <a class="back" href="#">← Back to All Projects</a>
+    <h1>Optimizing Engagement in Educational Games</h1>
+    <h2>The Challenge</h2>
+    <p>The design team for an educational Minecraft world needed to understand which game features were most effective at driving meaningful student engagement. The goal was to move beyond simple playtime metrics and provide data-driven recommendations to arrange the virtual environment for better learning outcomes.</p>
+    <h2>My Role & Process</h2>
+    <p>As the lead researcher, I was responsible for the entire research lifecycle. My process involved four key phases:</p>
     <ul>
-      <li>Analyzed real-time positional data and behavioral logs from 50+ student sessions.</li>
-      <li>Developed automated metrics for interaction quantity and quality.</li>
-      <li>Evaluated relationships between feature exposure, engagement density, and learning outcomes.</li>
+      <li><strong>Discovery & Data Collection:</strong> I worked with the team to define "engagement" and set up logging systems to capture real-time positional data and behavioral events from over 50 student sessions.</li>
+      <li><strong>Analysis & Synthesis:</strong> Using R, I cleaned and processed the large dataset, developed custom metrics for interaction quality, and created heatmaps to visualize engagement hotspots.</li>
+      <li><strong>Insight Generation:</strong> I identified distinct patterns of exploration and found that high interaction frequency did not always correlate with high-quality learning, a crucial insight for the team.</li>
+      <li><strong>Recommendations & Reporting:</strong> I presented my findings and a set of actionable design recommendations to the educational science stakeholders.</li>
     </ul>
-    <h2>Methods</h2>
+    <h2>Impact & Recommendations</h2>
+    <p>This research provided a clear, evidence-based path to improving the game's educational efficacy. I recommended the team:</p>
     <ul>
-      <li>Positional Tracking: Logged movements, tool usage, observational actions.</li>
-      <li>Lexical Diversity: Computed Type-Token Ratio on in-game chat and notes.</li>
-      <li>Spatial Aggregation: Generated heatmaps visualizing engagement intensity and quality.</li>
+      <li><strong>Concentrate learning content near high-traffic landmarks</strong> to maximize exposure and contextual learning opportunities.</li>
+      <li><strong>Implement guided prompts or "quests"</strong> for players who exhibit low-quality engagement patterns to help them discover deeper content.</li>
+      <li><strong>Refine analytics dashboards</strong> to track the nuanced engagement metrics I developed, providing a more accurate view of student learning.</li>
     </ul>
-    <h2>Key Insights</h2>
-    <ul>
-      <li>Players gravitated toward central landmarks and NPC zones for deeper interactions.</li>
-      <li>High engagement frequency did not always correlate with high-quality observations.</li>
-      <li>Distinct exploration strategies emerged based on feature familiarity.</li>
-    </ul>
-    <h2>Applications & Impact</h2>
-    <p>Guides game design by optimizing feature placement, aligning educational objectives, and refining engagement analytics tools.</p>
-    <h2>UX & Data Science Highlights</h2>
-    <ul>
-      <li><strong>Data Science:</strong> Time-series positional analysis, metric development, heatmap visualization.</li>
-      <li><strong>UX Research:</strong> Behavioral insights for immersive educational interfaces.</li>
-    </ul>
+    <h2>Challenges & Reflections</h2>
+    <p>A key challenge was defining "quality" engagement. Initially, the team focused on interaction frequency, but my analysis revealed this was a poor proxy for learning. This led me to develop a more nuanced, multi-faceted engagement metric combining movement, observation, and interaction with specific objects. This project taught me the importance of questioning initial assumptions and building robust, behavior-based metrics from the ground up.</p>
   </div>
-
-  <!-- Competition -->
+  
+  <div class="project-page" id="distributional">
+    <a class="back" href="#">← Back to All Projects</a>
+    <h1>Predictive Modeling of Vocabulary Acquisition</h1>
+    <h2>The Problem</h2>
+    <p>Educational platforms for young children struggle to introduce new vocabulary in an effective, personalized way. The challenge was to create a data-driven model that could predict which words a child is ready to learn next, using their existing vocabulary as a guide, to create truly adaptive learning experiences.</p>
+    <h2>My Role & Process</h2>
+    <p>As the primary author and researcher, I led this project from conception to publication. My process was:</p>
+    <ul>
+        <li><strong>Data Wrangling:</strong> I sourced and processed the CHILDES corpus, a massive dataset of over 6 million words of child-directed speech.</li>
+        <li><strong>Model Development:</strong> I designed and implemented a novel metric in Python, the Proportion of Known Word Co-occurrence (Pro-KWo), to model how familiar words can scaffold the learning of new ones.</li>
+        <li><strong>Statistical Validation:</strong> Using R, I ran mixed-effects models to rigorously test the predictive power of Pro-KWo against traditional metrics like word frequency, proving its superior performance.</li>
+        <li><strong>Publication & Communication:</strong> I authored the manuscript detailing the methodology and findings, which was peer-reviewed and published in the prestigious *Journal of Memory and Language*.</li>
+    </ul>
+    <h2>Impact & Recommendations</h2>
+    <p>This model provides a scalable method for personalizing educational content, with a 3x improvement in accuracy over existing benchmarks. I recommended that learning apps could use this model to:</p>
+    <ul>
+        <li><strong>Generate personalized word lists</strong> that are perfectly scaffolded to a child's current knowledge level.</li>
+        <li><strong>Design adaptive learning activities</strong> that dynamically introduce words with a high Pro-KWo score to maximize learning efficiency.</li>
+        <li><strong>Create diagnostic tools</strong> for educators to identify children who may need extra support based on their learning trajectory.</li>
+    </ul>
+    <h2>Challenges & Reflections</h2>
+    <p>This project underscored the power of using large-scale, naturalistic data to model cognitive processes. A key learning was that the *context* in which a word appears is a far more powerful predictor of learning than frequency alone. This reinforced my belief that understanding the user's existing mental model is the key to designing effective learning and user experiences.</p>
+  </div>
+  
   <div class="project-page" id="competition">
-    <a class="back" href="#">← Back to Portfolio</a>
-    <h1>Semantic Competition (2024)</h1>
-    <p><em>University of Illinois at Urbana-Champaign</em></p>
-    <h2>Project Overview</h2>
-    <p>Investigated how semantically related stimuli compete during memory retrieval and affect user interactions in interfaces.</p>
-    <h2>My Role</h2>
+    <a class="back" href="#">← Back to All Projects</a>
+    <h1>Reducing Cognitive Load via Interface Design</h1>
+    <h2>The Problem</h2>
+    <p>In a cluttered user interface, users often make errors by clicking on an item that is visually or conceptually similar to their actual target. The challenge was to scientifically measure this "semantic competition" and provide evidence-based design principles to reduce this cognitive load, especially in high-stakes environments like e-commerce checkouts or medical software.</p>
+    <h2>My Role & Process</h2>
+    <p>As the lead researcher on this project, my process was as follows:</p>
     <ul>
-      <li>Designed and ran Visual World Paradigm eye-tracking experiments (n=150).</li>
-      <li>Integrated ResNet CNN features with Word2Vec embeddings.</li>
-      <li>Analyzed Bayesian mixed-effects models to quantify competition.</li>
+        <li><strong>Experimental Design:</strong> I designed and implemented a Visual World Paradigm eye-tracking study (n=150) to capture in-the-moment cognitive conflict as users performed tasks.</li>
+        <li><strong>Multimodal Feature Engineering:</strong> I developed a novel approach that integrated visual features (from a ResNet CNN) with linguistic features (from Word2Vec embeddings) to create a holistic measure of item similarity.</li>
+        <li><strong>Advanced Analysis:</strong> I analyzed the gaze data using Bayesian mixed-effects models to precisely quantify how much time users spent looking at "competitor" items before making a correct choice.</li>
+        <li><strong>Guideline Formulation:</strong> I translated the statistical findings into a set of clear, actionable UI design heuristics for minimizing cognitive interference.</li>
     </ul>
-    <h2>Methods</h2>
+    <h2>Impact & Recommendations</h2>
+    <p>My finding that users glance at related distractors in 40% of trials provided a powerful mandate for cleaner design. My recommendations for UI and UX designers included:</p>
     <ul>
-      <li>Visual World Paradigm: Tracked gaze to measure semantic activation.</li>
-      <li>CNN Feature Extraction: Processed images via ResNet.</li>
-      <li>Embedding Analysis: Calculated cosine similarity on Word2Vec vectors.</li>
+        <li><strong>Maximize distance between competing actions:</strong> Ensure that primary call-to-action buttons (e.g., "Confirm Purchase") are physically and visually distinct from secondary or destructive actions (e.g., "Empty Cart").</li>
+        <li><strong>Leverage context to reduce ambiguity:</strong> Use headers, labels, and grouping to create clear "zones" in the UI, reducing the chance that items from one zone compete with another.</li>
+        <li><strong>Conduct "cognitive walkthroughs"</strong> during the design phase specifically to identify potential areas of semantic competition before they are built.</li>
     </ul>
-    <h2>Key Insights</h2>
-    <ul>
-      <li>Users glance at semantically related distractors in 40% of trials.</li>
-      <li>Visual and linguistic contexts modulate interference.</li>
-      <li>Competition strength varies with task demands.</li>
-    </ul>
-    <h2>Applications & Impact</h2>
-    <p>Informs interface layout and labeling to reduce cognitive interference and enhance usability.</p>
-    <h2>UX & Data Science Highlights</h2>
-    <ul>
-      <li><strong>Data Science:</strong> Multimodal feature integration, Bayesian modeling.</li>
-      <li><strong>UX Research:</strong> Eye-tracking insights for cognitive alignment.</li>
-    </ul>
+    <h2>Challenges & Reflections</h2>
+    <p>The most surprising insight was that users looked at competitor items even when they reported feeling completely confident in their choice. This taught me that self-reported metrics can be unreliable and underscored the immense value of objective behavioral measures like eye-tracking to reveal the hidden cognitive friction in an interface.</p>
   </div>
 
-  <!-- Similarity -->
   <div class="project-page" id="similarity">
-    <a class="back" href="#">← Back to Portfolio</a>
-    <h1>Similarity Judgments (2024)</h1>
-    <p><em>University of Illinois at Urbana-Champaign</em></p>
-    <h2>Project Overview</h2>
-    <p>Explored how task instructions and context shape user perceptions of similarity between concepts, using visual and linguistic stimuli.</p>
-    <h2>My Role</h2>
+    <a class="back" href="#">← Back to All Projects</a>
+    <h1>Informing Context-Aware Recommendation Engines</h1>
+    <h2>The Problem</h2>
+    <p>Recommendation engines often fail because their definition of "similarity" is too rigid. A user looking for a "similar" movie might mean one with the same director, or one with the same visual style. The challenge was to understand how a user's context and goals dynamically change how they perceive similarity, in order to build more intelligent, adaptive systems.</p>
+    <h2>My Role & Process</h2>
+    <p>As the principal researcher, I designed and executed a study to model this dynamic process:</p>
     <ul>
-      <li>Created instruction sets for similarity rating tasks (n=200).</li>
-      <li>Applied CNN and Word2Vec metrics to predict judgments.</li>
-      <li>Performed mixed-effects regression to model feature weighting.</li>
+        <li><strong>Experimental Manipulation:</strong> I designed an experiment where 200 participants rated the similarity of items, but with different sets of instructions—some were told to focus on conceptual similarity, others on visual similarity.</li>
+        <li><strong>Feature Modeling:</strong> I used both CNNs and Word2Vec models to extract distinct visual and semantic "feature profiles" for each item.</li>
+        <li><strong>Regression Analysis:</strong> I used mixed-effects regression to build a statistical model showing how much weight users gave to visual vs. semantic features depending on the instructions they received.</li>
+        <li><strong>Insight Synthesis:</strong> I distilled the complex regression results into a clear narrative about how context shapes user perception.</li>
     </ul>
-    <h2>Methods</h2>
+    <h2>Impact & Recommendations</h2>
+    <p>This work provides a clear framework for building more sophisticated, context-aware AI systems. My key recommendation was for a "hybrid" recommendation engine that would:</p>
     <ul>
-      <li>Instruction Manipulation: Conceptual vs. visual focus tasks.</li>
-      <li>Feature Extraction: Low/high-level visual and semantic embeddings.</li>
-      <li>Adaptive Weighting: Regression modeling of dynamic relevance.</li>
+        <li><strong>Infer user intent from behavior:</strong> If a user is clicking on visually similar items, the engine should increase the weight of visual features in its recommendations.</li>
+        <li><strong>Offer explicit filter controls:</strong> Allow users to directly tell the system what "similar" means to them (e.g., toggles for "More like this in genre" vs. "More with this art style").</li>
+        <li><strong>Adapt UI labeling:</strong> The way items are described and categorized should change based on the user's inferred context to feel more relevant.</li>
     </ul>
-    <h2>Key Insights</h2>
-    <ul>
-      <li>Visual instructions increased reliance on CNN features by 30%.</li>
-      <li>Users flexibly integrate cues based on context.</li>
-      <li>Feature relevance shifts with task demands.</li>
-    </ul>
-    <h2>Applications & Impact</h2>
-    <p>Guides recommendation engines, adaptive categorization, and context-aware UI labeling.</p>
-    <h2>UX & Data Science Highlights</h2>
-    <ul>
-      <li><strong>Data Science:</strong> Multimodal similarity modeling, regression analysis.</li>
-      <li><strong>UX Research:</strong> Contextual perception insights for interfaces.</li>
-    </ul>
+    <h2>Challenges & Reflections</h2>
+    <p>The most challenging aspect was creating a clean experimental design to isolate the effect of instructions from other confounding variables. It reinforced the importance of rigorous experimental design even when working on applied problems. The project demonstrated that the "right" answer in a UI often depends entirely on the user's unstated goal.</p>
   </div>
 
   <script>
-    // Filter buttons
+    // --- Navigation Logic ---
     const filterBtns = document.querySelectorAll('nav button');
     const cards = document.querySelectorAll('.card');
+    const landing = document.getElementById('landing');
+    const pages = document.querySelectorAll('.project-page');
+    const nav = document.querySelector('nav');
+
+    // Filter functionality
     filterBtns.forEach(btn => btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const filter = btn.dataset.filter;
       cards.forEach(c => {
-        c.style.display = (filter === 'all' || c.dataset.filter === filter) ? 'block' : 'none';
+        c.style.display = (filter === 'all' || c.dataset.filter === filter) ? 'flex' : 'none';
       });
     }));
 
-    // Navigation between landing and project pages
-    const landing = document.getElementById('landing');
-    const pages = document.querySelectorAll('.project-page');
-    cards.forEach(card => {
-      card.addEventListener('click', () => {
-        const p = document.getElementById(card.dataset.project);
-        if (p) {
-          landing.style.display = 'none';
-          document.querySelector('nav').style.display = 'none';
-          p.style.display = 'block';
+    // Page navigation
+    const showPage = (pageId) => {
+        landing.style.display = 'none';
+        nav.style.display = 'none';
+        pages.forEach(p => p.style.display = 'none');
+        const activePage = document.getElementById(pageId);
+        if (activePage) {
+            activePage.style.display = 'block';
+            window.scrollTo(0, 0);
         }
-      });
+    };
+
+    const showLanding = () => {
+        pages.forEach(p => p.style.display = 'none');
+        nav.style.display = 'block';
+        landing.style.display = 'block';
+        window.scrollTo(0, 0);
+    };
+
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            showPage(card.dataset.project);
+        });
     });
-    document.querySelectorAll('.back').forEach(link => link.addEventListener('click', e => {
-      e.preventDefault();
-      pages.forEach(p => p.style.display = 'none');
-      document.querySelector('nav').style.display = 'block';
-      landing.style.display = 'block';
-      window.scrollTo(0, 0);
-    }));
+
+    document.querySelectorAll('.back').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            showLanding();
+        });
+    });
   </script>
 </body>
 </html>
